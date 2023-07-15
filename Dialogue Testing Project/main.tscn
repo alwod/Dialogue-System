@@ -1,15 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://f1ohqmwmbc3p"]
+[gd_scene load_steps=9 format=3 uid="uid://f1ohqmwmbc3p"]
 
 [ext_resource type="PackedScene" uid="uid://b3hxqvmyb1tvs" path="res://player.tscn" id="1_pafon"]
+[ext_resource type="Shader" path="res://shader_material.gdshader" id="2_n0xo4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6j4oo"]
-size = Vector3(60, 2, 60)
+size = Vector3(100, 2, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icx6c"]
 albedo_color = Color(0.0588235, 0.47451, 0.329412, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qx7y3"]
 material = SubResource("StandardMaterial3D_icx6c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axbx4"]
+shader = ExtResource("2_n0xo4")
+shader_parameter/skyColour = Color(0.329412, 0.733333, 0.952941, 1)
+shader_parameter/horizonColor = Color(0.423529, 0.784314, 0.972549, 1)
+
+[sub_resource type="Sky" id="Sky_pehnl"]
+sky_material = SubResource("ShaderMaterial_axbx4")
+
+[sub_resource type="Environment" id="Environment_da5tb"]
+background_mode = 2
+sky = SubResource("Sky_pehnl")
+ambient_light_source = 3
 
 [node name="Main" type="Node"]
 
@@ -20,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03909, 0)
 shape = SubResource("BoxShape3D_6j4oo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(60, 0, 0, 0, 2, 0, 0, 0, 60, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 2, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("BoxMesh_qx7y3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -37,3 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3917)
 size = 19.0
 far = 100.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_da5tb")
