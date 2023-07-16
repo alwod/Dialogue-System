@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://f1ohqmwmbc3p"]
 
-[ext_resource type="PackedScene" uid="uid://b3hxqvmyb1tvs" path="res://player.tscn" id="1_pafon"]
-[ext_resource type="Shader" path="res://shader_material.gdshader" id="2_n0xo4"]
+[ext_resource type="PackedScene" uid="uid://b3hxqvmyb1tvs" path="res://Scenes/player.tscn" id="1_pafon"]
+[ext_resource type="Shader" path="res://Scripts/shader_material.gdshader" id="2_rnk01"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6j4oo"]
 size = Vector3(100, 2, 100)
@@ -13,9 +13,9 @@ albedo_color = Color(0.0588235, 0.47451, 0.329412, 1)
 material = SubResource("StandardMaterial3D_icx6c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbx4"]
-shader = ExtResource("2_n0xo4")
-shader_parameter/skyColour = Color(0.329412, 0.733333, 0.952941, 1)
-shader_parameter/horizonColor = Color(0.423529, 0.784314, 0.972549, 1)
+shader = ExtResource("2_rnk01")
+shader_parameter/skyColour = Color(0.647059, 0.647059, 0.980392, 1)
+shader_parameter/horizonColor = Color(0.843137, 0.67451, 0.815686, 1)
 
 [sub_resource type="Sky" id="Sky_pehnl"]
 sky_material = SubResource("ShaderMaterial_axbx4")
