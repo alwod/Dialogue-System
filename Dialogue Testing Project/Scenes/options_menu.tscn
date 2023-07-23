@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://baq2l5alfr45m"]
+[gd_scene load_steps=3 format=3 uid="uid://baq2l5alfr45m"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_rxs05"]
+[ext_resource type="AudioStream" uid="uid://cj3vca5vcxok7" path="res://Audio/camera-shutter-click.wav" id="2_uahaq"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -70,5 +71,10 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="ButtonPressSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uahaq")
+
 [connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/DisplayModeOptionsButton" to="." method="_on_display_mode_options_button_item_selected"]
+[connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/DisplayModeOptionsButton" to="." method="pressed"]
+[connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="pressed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
