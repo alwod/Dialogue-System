@@ -24,7 +24,8 @@ func pressed():
 # Changes the camera sensitivity in the project settings.
 func _on_sensitivity_slider_value_changed(value):
 	ProjectSettings.set_setting("player/camera_sensitivity", value)
-	#$TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/DisplaySensitivity.text = value as String
+	var sensitivityVal = snapped(value, 0.0001)
+	$TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/DisplaySensitivity.text = "%s" % [sensitivityVal * 1000]
 
 # This is a function as not all UI elements that need to play this sound when clicked, are buttons.
 func play_button_sound():
