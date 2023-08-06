@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://f1ohqmwmbc3p"]
+[gd_scene load_steps=11 format=3 uid="uid://f1ohqmwmbc3p"]
 
 [ext_resource type="PackedScene" uid="uid://b3hxqvmyb1tvs" path="res://Scenes/player.tscn" id="1_pafon"]
 [ext_resource type="Shader" path="res://Scripts/shader_material.gdshader" id="2_rnk01"]
 [ext_resource type="PackedScene" uid="uid://c2yqy1nhopqe7" path="res://Scenes/npc.tscn" id="3_d17gb"]
+
+[sub_resource type="GDScript" id="GDScript_x3wya"]
+script/source = "extends Node
+
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6j4oo"]
 size = Vector3(100, 2, 100)
@@ -15,8 +20,8 @@ material = SubResource("StandardMaterial3D_icx6c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbx4"]
 shader = ExtResource("2_rnk01")
-shader_parameter/skyColour = Color(0.647059, 0.647059, 0.980392, 1)
-shader_parameter/horizonColor = Color(0.843137, 0.67451, 0.815686, 1)
+shader_parameter/skyColour = Color(0.27451, 0.635294, 0.878431, 1)
+shader_parameter/horizonColor = Color(0.305882, 0.517647, 0.572549, 1)
 
 [sub_resource type="Sky" id="Sky_pehnl"]
 sky_material = SubResource("ShaderMaterial_axbx4")
@@ -27,6 +32,7 @@ sky = SubResource("Sky_pehnl")
 ambient_light_source = 3
 
 [node name="Main" type="Node"]
+script = SubResource("GDScript_x3wya")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03909, 0)

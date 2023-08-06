@@ -19,7 +19,10 @@ func _on_vsync_check_button_toggled(button_pressed):
 
 # Called when any button is pressed to play a sound.
 func pressed():
-	$ButtonPressSoundPlayer.play()
+	play_button_sound()
 
 func _on_sensitivity_slider_value_changed(value):
 	ProjectSettings.set_setting("player/camera_sensitivity", value)
+
+func play_button_sound():
+	$ButtonPressSoundPlayer.play()
