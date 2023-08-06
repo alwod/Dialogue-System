@@ -83,6 +83,16 @@ text = "DIsplay FPS:"
 layout_mode = 2
 size_flags_horizontal = 8
 
+[node name="Brightness" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Brightness:"
+
+[node name="BrightnessSlider" type="HSlider" parent="TabContainer/Video/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+value = 50.0
+
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
@@ -106,12 +116,20 @@ theme_override_constants/margin_right = 25
 layout_mode = 2
 columns = 2
 
-[node name="SensitivityLabel" type="Label" parent="TabContainer/Gameplay/MarginContainer/GridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Gameplay/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Camera Sensitivity"
+size_flags_horizontal = 10
 
-[node name="SensitivitySlider" type="HSlider" parent="TabContainer/Gameplay/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="SensitivityLabel" type="Label" parent="TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Camera Sensitivity:"
+
+[node name="DisplaySensitivity" type="Label" parent="TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="SensitivitySlider" type="HSlider" parent="TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 min_value = 0.001
@@ -128,4 +146,4 @@ stream = ExtResource("2_uahaq")
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
 [connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/DisplayFPSButton" to="." method="pressed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/DisplayFPSButton" to="." method="_on_display_fps_button_toggled"]
-[connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GridContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
