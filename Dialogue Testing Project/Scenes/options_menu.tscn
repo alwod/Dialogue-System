@@ -34,7 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
@@ -76,11 +75,20 @@ text = "Vsync:"
 layout_mode = 2
 size_flags_horizontal = 8
 
+[node name="DisplayFPS" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "DIsplay FPS:"
+
+[node name="DisplayFPSButton" type="CheckButton" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
 [node name="Gameplay" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Gameplay"]
@@ -118,4 +126,6 @@ stream = ExtResource("2_uahaq")
 [connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/DisplayModeOptionsButton" to="." method="pressed"]
 [connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="pressed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
+[connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/DisplayFPSButton" to="." method="pressed"]
+[connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/DisplayFPSButton" to="." method="_on_display_fps_button_toggled"]
 [connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GridContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
