@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SaveOptions="*res://Scripts/save_options.gd"
+SaveOptions="*res://Scripts/save.gd"
 
 [display]
 
