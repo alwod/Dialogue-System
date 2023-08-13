@@ -220,9 +220,11 @@ value = 0.002
 
 [node name="sound_player" parent="." instance=ExtResource("2_56kek")]
 
-[connection signal="play_sound" from="." to="sound_player" method="_on_play_sound"]
 [connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/DisplayModeOptionsButton" to="." method="_on_display_mode_options_button_item_selected"]
-[connection signal="pressed" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="_on_button_pressed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/DisplayFPSButton" to="." method="_on_display_fps_button_toggled"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/GridContainer/HBoxContainer/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/HBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/HBoxContainer2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/HBoxContainer3/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]

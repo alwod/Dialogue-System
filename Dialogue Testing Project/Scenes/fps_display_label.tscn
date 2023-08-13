@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfn832vvsslr7"]
+
+[ext_resource type="Script" path="res://Scripts/fps_display_label.gd" id="1_tmjc2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34tgo"]
+bg_color = Color(0.913725, 0.423529, 0.427451, 1)
+
+[node name="FPSDisplayLabel" type="Label"]
+visible = false
+offset_right = 315.0
+offset_bottom = 124.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 88
+theme_override_styles/normal = SubResource("StyleBoxFlat_34tgo")
+text = "FPS: 60"
+script = ExtResource("1_tmjc2")
