@@ -20,9 +20,27 @@ extends Control
 @onready var sensitivity_slider = $TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/SensitivitySlider
 
 
+# Loads settings from the save file
 func _ready():
-	pass # Replace with function body.
+	initialise_settings()
 
+func initialise_settings():
+	display_options.select(Save.game_data["display_mode"])
+	GlobalSettings.change_display_mode(Save.game_data["display_mode"])
+	
+	vsync_button.button_pressed = Save.game_data["vsync_on"]
+	GlobalSettings.toggle_vsync(Save.game_data["vsync_on"])
+	
+	display_fps_button.button_pressed = Save.game_data["display_fps"]
+	GlobalSettings.toggle_fps_display(Save.game_data["display_fps"])
+	
+	brightness_slider.value = Save.game_data["brightness"]
+	
+	master_volume_slider.value = Save.game_data["master_volume"]
+	sfx_volume_slider.value = Save.game_data["sfx_volume"]
+	music_volume_slider.value = Save.game_data["music_volume"]
+	
+	sensitivity_slider.value = Save.game_data["sensitivity"]
 
 func _on_display_mode_options_button_item_selected(index: int):
 	GlobalSettings.change_display_mode(index)
@@ -63,3 +81,8 @@ func _on_sensitivity_slider_value_changed(sensitivity_value: float):
 	GlobalSettings.update_sensitivity(sensitivity_value)
 	sensitivity_value *= 1000
 	sensitivity_display.text = str(sensitivity_value)
+
+# Resets all settings to default before re-initialising them.
+func _on_default_settings_button_pressed():
+	Save.reset_options()
+	initialise_settings()
