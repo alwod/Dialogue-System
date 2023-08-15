@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy6c6wcxqgeq1"
+path="res://.godot/imported/Song of the Guerillas.wav-ad108b37578e3ab994f5d47e941567ef.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Song of the Guerillas.wav"
+dest_files=["res://.godot/imported/Song of the Guerillas.wav-ad108b37578e3ab994f5d47e941567ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

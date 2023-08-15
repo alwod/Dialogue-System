@@ -19,6 +19,9 @@ extends Control
 @onready var sensitivity_display = $TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/DisplaySensitivityLabel
 @onready var sensitivity_slider = $TabContainer/Gameplay/MarginContainer/GridContainer/HBoxContainer/SensitivitySlider
 
+@onready var click_sound = $ClickSound
+
+var can_play_button_sound = false
 
 # Loads settings from the save file
 func _ready():
@@ -41,35 +44,44 @@ func initialise_settings():
 	music_volume_slider.value = Save.game_data["music_volume"]
 	
 	sensitivity_slider.value = Save.game_data["sensitivity"]
+	
+	can_play_button_sound = true
 
 func _on_display_mode_options_button_item_selected(index: int):
+	play_button_sound()
 	GlobalSettings.change_display_mode(index)
 
 
 func _on_vsync_check_button_toggled(button_pressed: bool):
+	play_button_sound()
 	GlobalSettings.toggle_vsync(button_pressed)
 
 
 func _on_display_fps_button_toggled(button_pressed: bool):
+	play_button_sound()
 	GlobalSettings.toggle_fps_display(button_pressed)
 
 
 func _on_brightness_slider_value_changed(brightness_value: float):
+	play_button_sound()
 	GlobalSettings.set_brightness(brightness_value)
 	brightness_display.text = str(brightness_value)
 
 
 func _on_master_volume_slider_value_changed(volume_level: float):
+	play_button_sound()
 	GlobalSettings.update_volume(0, volume_level)
 	master_volume_display.text = str(volume_level)
 
 
 func _on_sfx_volume_slider_value_changed(volume_level: float):
+	play_button_sound()
 	GlobalSettings.update_volume(1, volume_level)
 	sfx_volume_display.text = str(volume_level)
 
 
 func _on_music_volume_slider_value_changed(volume_level: float):
+	play_button_sound()
 	GlobalSettings.update_volume(2, volume_level)
 	music_volume_display.text = str(volume_level)
 
@@ -77,6 +89,7 @@ func _on_music_volume_slider_value_changed(volume_level: float):
 # The value is normally a really long float, so its shortened and, for the display, changed to a
 # number between 1 and 5.
 func _on_sensitivity_slider_value_changed(sensitivity_value: float):
+	play_button_sound()
 	sensitivity_value = snapped(sensitivity_value, 0.0001)
 	GlobalSettings.update_sensitivity(sensitivity_value)
 	sensitivity_value *= 1000
@@ -84,5 +97,10 @@ func _on_sensitivity_slider_value_changed(sensitivity_value: float):
 
 # Resets all settings to default before re-initialising them.
 func _on_default_settings_button_pressed():
+	play_button_sound()
 	Save.reset_options()
 	initialise_settings()
+
+func play_button_sound():
+	if can_play_button_sound:
+		click_sound.play()
