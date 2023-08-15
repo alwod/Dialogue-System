@@ -8,3 +8,4 @@ script = ExtResource("1_tdbau")
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fkuxj")
+bus = &"SFX"

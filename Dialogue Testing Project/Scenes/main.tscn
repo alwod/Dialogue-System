@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://f1ohqmwmbc3p"]
+[gd_scene load_steps=8 format=3 uid="uid://f1ohqmwmbc3p"]
 
 [ext_resource type="PackedScene" uid="uid://b3hxqvmyb1tvs" path="res://Scenes/player.tscn" id="1_pafon"]
-[ext_resource type="Shader" path="res://Scripts/shader_material.gdshader" id="2_rnk01"]
+[ext_resource type="PackedScene" uid="uid://cn8ncdgoy1ww8" path="res://Scenes/world_environment.tscn" id="2_0lsif"]
 [ext_resource type="PackedScene" uid="uid://c2yqy1nhopqe7" path="res://Scenes/npc.tscn" id="3_d17gb"]
 
 [sub_resource type="GDScript" id="GDScript_x3wya"]
@@ -17,19 +17,6 @@ albedo_color = Color(0.0588235, 0.47451, 0.329412, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qx7y3"]
 material = SubResource("StandardMaterial3D_icx6c")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_axbx4"]
-shader = ExtResource("2_rnk01")
-shader_parameter/skyColour = Color(0.27451, 0.635294, 0.878431, 1)
-shader_parameter/horizonColor = Color(0.305882, 0.517647, 0.572549, 1)
-
-[sub_resource type="Sky" id="Sky_pehnl"]
-sky_material = SubResource("ShaderMaterial_axbx4")
-
-[sub_resource type="Environment" id="Environment_da5tb"]
-background_mode = 2
-sky = SubResource("Sky_pehnl")
-ambient_light_source = 3
 
 [node name="Main" type="Node"]
 script = SubResource("GDScript_x3wya")
@@ -51,8 +38,7 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_pafon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_da5tb")
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_0lsif")]
 
 [node name="NPC James" parent="." instance=ExtResource("3_d17gb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48882, 0.985956, 4.90734)

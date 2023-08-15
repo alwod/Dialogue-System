@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://rb11f5df7niq"]
+
+[ext_resource type="Shader" path="res://Scripts/shader_material.gdshader" id="1_151hl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axbx4"]
+shader = ExtResource("1_151hl")
+shader_parameter/skyColour = Color(0.27451, 0.635294, 0.878431, 1)
+shader_parameter/horizonColor = Color(0.305882, 0.517647, 0.572549, 1)
+
+[sub_resource type="Sky" id="Sky_pehnl"]
+sky_material = SubResource("ShaderMaterial_axbx4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_pehnl")
+ambient_light_source = 3
